@@ -51,30 +51,30 @@ export default function FormSignUp({setFormActive, onClose, setIsLoading}: Props
     }, [isPending])
 
     return (
-        <form onSubmit={handleSubmit(handleForm)} className='bg-white p-10'>
-            <label className='flex gap-2 flex-col pb-8 w-full text-black'>
+        <form onSubmit={handleSubmit(handleForm)} className='bg-white px-6 sm:px-8 md:p-2 w-full md:w-2/5 mx-auto'>
+            <label className={`flex gap-[2px] flex-col ${errors.name ? 'pb-1 sm:pb-3' : 'pb-3 sm:pb-5'} w-full text-xl sm:text-2xl font-semibold`}>
                 Name:
-                <input type="text" id="name"  {...register('name')} onChange={handleInputChange} className='border border-black text-black' readOnly={isPending}/>
+                <input type="text" {...register('name')} onChange={handleInputChange} className='h-10 sm:h-[54px] font-normal px-2 rounded-[10px] border border-black text-black' readOnly={isPending}/>
                 {errors.name && (
                     <FieldError color='#fff' message={errors.name?.message} />
                 )}
             </label>
-            <label className='flex gap-2 flex-col pb-8 w-full text-black'>
+            <label className={`flex gap-[2px] flex-col ${errors.email ? 'pb-1 sm:pb-3' : 'pb-3 sm:pb-5'} w-full text-xl sm:text-2xl font-semibold`}>
                 E-mail:
-                <input type="email" id="email"  {...register('email')} onChange={handleInputChange} className='border border-black text-black' readOnly={isPending}/>
+                <input type="email" {...register('email')} onChange={handleInputChange} className='h-10 sm:h-[54px] font-normal px-2 rounded-[10px] border border-black text-black' readOnly={isPending}/>
                 {errors.email && (
                     <FieldError color='#fff' message={errors.email?.message} />
                 )}
             </label>
-            <label className='flex gap-2 flex-col pb-8 w-full text-black'>
+            <label className={`flex gap-[2px] flex-col ${errors.password ? 'pb-1 sm:pb-3' : 'pb-3 sm:pb-5'} w-full text-xl sm:text-2xl font-semibold`}>
                 Password:
-                <input type="password" id="password"  {...register('password')} onChange={handleInputChange} className='border border-black text-black' readOnly={isPending}/>
+                <input type="password" {...register('password')} onChange={handleInputChange} className='h-10 sm:h-[54px] font-normal px-2 rounded-[10px] border border-black text-black' readOnly={isPending}/>
                 {errors.password && (
                     <FieldError color='#fff' message={errors.password?.message} />
                 )}
             </label>
     
-            <button type="submit" className='relative bg-blue-500 text-white py-2 px-3 mt-6 rounded-lg w-fit block mx-auto uppercase text-xl sm:text-2xl font-semibold sm:py-3 sm:px-6 disabled:opacity-60 hover:bg-blue-600 transition-colors' disabled={isPending}>
+            <button type="submit" className='relative bg-themecolorprimary text-white py-2 px-3 mt-3 w-4/5 block mx-auto text-xl sm:text-2xl font-semibold sm:py-3 sm:px-6 disabled:opacity-60 hover:bg-green-600 transition-colors' disabled={isPending}>
                 {isPending ? 
                     <> 
                         signing up...
@@ -89,7 +89,7 @@ export default function FormSignUp({setFormActive, onClose, setIsLoading}: Props
 
             <FormMessage success message={message}/>
 
-            <p className="text-black mt-4">Already have an account? <button className="underline" onClick={() => setFormActive('SignIn')}>Sign in</button></p>
+            <p className="text-black mt-5 text-center">Already have an account? <button className="underline" onClick={() => setFormActive('SignIn')}>Sign in</button></p>
         </form>
     );
 }
