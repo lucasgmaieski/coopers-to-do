@@ -1,3 +1,4 @@
+import FormContact from "@/components/Form/FormContact";
 import { Header } from "@/components/Header/Header";
 import { Button } from "@/components/Utils/Button";
 import { auth } from "@/lib/auth";
@@ -36,6 +37,9 @@ export default async function Home() {
                     </div>
                 </div>
             </section>
+
+            <FormContact />
+            
         </main>
     );
 }
