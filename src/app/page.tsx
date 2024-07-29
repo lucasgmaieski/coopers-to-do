@@ -1,5 +1,6 @@
 import FormContact from "@/components/Form/FormContact";
 import { Header } from "@/components/Header/Header";
+import { PostsSection } from "@/components/Posts/PostsSection";
 import { Button } from "@/components/Utils/Button";
 import { auth } from "@/lib/auth";
 import Image from "next/image";
@@ -37,6 +38,8 @@ export default async function Home() {
                     </div>
                 </div>
             </section>
+
+            <PostsSection />
 
             <FormContact />
             
