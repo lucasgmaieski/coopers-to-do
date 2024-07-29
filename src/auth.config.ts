@@ -9,8 +9,8 @@ export default {
     providers: [
         credentials({
             credentials: {
-                email: { label: "Email", type: "text", placeholder: "Digite seu email" },
-                password: { label: "Password", type: "password" }
+                email: { },
+                password: { }
             },
             authorize: async (credentials)  => {
                 const { data, success } = signInSchema.safeParse(credentials);
@@ -26,9 +26,10 @@ export default {
 
                 if(!user || !user.password) {
                     console.log("Credenciais inválidas")
-                    return null;
+                    throw new Error("User not found.")
+                    return null
                 }
-                
+
                 const validPassword = await bcrypt.compare(
                     credentials.password as string,
                     user.password
@@ -36,7 +37,7 @@ export default {
                 if(!validPassword) {
                     return null;
                 } 
-                
+
                 return {
                     id: `${user.id}`,
                     name: user.name,
