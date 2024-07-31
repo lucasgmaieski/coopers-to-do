@@ -77,14 +77,14 @@ export function TaskList({session}: Props){
     };    
 
     const handleToggleDone = async (task: Task) => {
-        setTransitioningTask(task.id);
-    
+        
         try {
-            await new Promise((resolve) => setTimeout(resolve, 500));
-            
             const updatedTask = { ...task, done: !task.done };
-
+            
             const resUpdatedTask = await axios.patch(`/api/todos/${task.id}`, { done: updatedTask.done });
+
+            setTransitioningTask(task.id);
+            await new Promise((resolve) => setTimeout(resolve, 500));
             if(resUpdatedTask.data.status === 200) {
                 if (updatedTask.done) {
                     setTasks(tasks.filter(t => t.id !== task.id));
@@ -110,11 +110,11 @@ export function TaskList({session}: Props){
     };    
 
     const handleDelete = async (id: number) => {
-        setDeletingTask(id);
-    
+        
         try {
-            await new Promise((resolve) => setTimeout(resolve, 450));
             const deletedTask = await axios.delete(`/api/todos/${id}`);
+            setDeletingTask(id);
+            await new Promise((resolve) => setTimeout(resolve, 450));
             if(deletedTask.data.status === 200) {
                 setDoneTasks(doneTasks.filter(task => task.id !== id));
                 setTasks(tasks.filter(task => task.id !== id));
