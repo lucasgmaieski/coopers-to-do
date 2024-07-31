@@ -18,7 +18,12 @@
   height: 29px;
   background: rgb(var(--theme-color1));
 }
-
+@media(max-width: 768px) {
+  .swiper .swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+}
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

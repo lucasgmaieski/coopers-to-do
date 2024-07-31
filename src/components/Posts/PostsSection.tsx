@@ -10,8 +10,8 @@ export function PostsSection() {
     return (
         <section className="w-full">
             <div className=" max-w-7xl container relative">
-                <div className="bg-themecolorprimary rounded-[10px] absolute w-10/12 h-5/6"></div>
-                <div className="relative pl-10 sm:pl-20 pt-10 sm:pt-20 space-y-10">
+                <div className="bg-themecolorprimary rounded-[10px] absolute w-3/4 sm:w-10/12 h-3/4 sm:h-5/6"></div>
+                <div className="relative pl-5 sm:pl-20 pt-10 sm:pt-20 space-y-10">
                     <h2 className="text-white text-4xl sm:text-5xl font-bold">good things</h2>
 
                     <Swiper
