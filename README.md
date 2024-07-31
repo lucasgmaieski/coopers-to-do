@@ -5,7 +5,7 @@
 
 ## 💻 Preview
 <div style="display: flex; gap: 10px">
-    <img src="public/preview-coopers.gif" width="100%" alt="Preview Desktop">
+    <img src="public/preview-coopers-to-do.gif" width="100%" alt="Preview Desktop">
 </div>
 
 
@@ -38,7 +38,7 @@ Paro o desenvolvimento utilizei as seguintes tecnologias:
 - [Resend](https://resend.com/)
 
 ## Links
-* Repositório: https://github.com/lucasgmaieski/sonho-auto-veiculos
+* Repositório: https://github.com/lucasgmaieski/coopers-to-do
 * Deploy: https://coopers-to-do.vercel.app/
 <br />
 <br />
