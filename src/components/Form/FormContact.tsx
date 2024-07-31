@@ -18,7 +18,7 @@ export default function FormContact() {
 
     const { handleSubmit, register, formState: { errors }, reset } = useForm<FormProps>({
         mode: 'all',
-        reValidateMode: 'onBlur',
+        reValidateMode: 'onChange',
         resolver: zodResolver(contactSchema)
     });
 
@@ -34,11 +34,11 @@ export default function FormContact() {
                 cache: 'no-store'
             });
             if(!response.ok) {
-                setMessage("Falha ao enviar sua mensagem, tente novamente!");
+                setMessage("Failed to send your message, please try again!");
                 setSuccess(false);
                 throw new Error('Failed to fetch data');
             } else if(response.ok) {
-                setMessage("Mensagem enviada com sucesso. Retornaremos o mais breve possível, Obrigado!");
+                setMessage("Message sent successfully. We will get back to you as soon as possible, Thank you!");
                 setSuccess(true);
                 reset()
             }
@@ -51,10 +51,10 @@ export default function FormContact() {
 
     return (
         <div className="shadow-xl mt-40 mb-10 sm:mb-20 rounded max-w-[700px] w-[95%] md:w-full">
-            <div className="px-10 sm:px-16 -mt-20">
+            <div className="px-10 sm:px-16 -mt-20 space-y-3 sm:space-y-0">
                 <div className="relative w-fit mx-auto before:content-[''] before:absolute before:w-full before:h-6 before:bg-themecolorprimary before:-left-1/2 before:top-1/2 before:-translate-y-1/2">
                     <Image
-                        className="relative"
+                        className="relative w-36 sm:w-[190px]"
                         src="/person.png"
                         alt="Icon mail"
                         width={190}
@@ -63,44 +63,44 @@ export default function FormContact() {
                 </div>
                 <div className="flex gap-6">
                     <Image
-                        className="relative"
+                        className="relative size-14 sm:size-[60px]"
                         src="/icon-mail.png"
                         alt="Icon mail"
                         width={60}
                         height={60}
                     />
-                    <h2 className="text-2xl ">Get in <br /> <span className="font-bold">Touch</span></h2>
+                    <h2 className="text-xl sm:text-2xl ">Get in <br /> <span className="font-bold">Touch</span></h2>
                 </div>
             </div>
-            <form onSubmit={handleSubmit(handleForm)} className='bg-white p-10 sm:p-16'>
-                <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal'>
+            <form onSubmit={handleSubmit(handleForm)} className='bg-white p-8 sm:p-16 rounded'>
+                <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal text-[#06152b]'>
                     Your name
                     <input type="text" id="name" placeholder="Type your name here..." {...register('name')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500' readOnly={isPending}/>
                     {errors.name && (
-                        <FieldError color='#fff' message={errors.name?.message} />
+                        <FieldError  message={errors.name?.message} />
                     )}
                 </label>
                 <div className="flex gap-0 sm:gap-[20px] flex-col sm:flex-row">
-                    <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal'>
+                    <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal text-[#06152b]'>
                         E-mail*
                         <input type="email" id="email" placeholder="example@example.com" {...register('email')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500' readOnly={isPending}/>
                         {errors.email && (
-                            <FieldError color='#fff' message={errors.email?.message} />
+                            <FieldError message={errors.email?.message} />
                         )}
                     </label>
-                    <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal'>
+                    <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal text-[#06152b]'>
                         Telephone*
                         <input type="text" id="phone" placeholder="(  ) ____-____" {...register('phone')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500' readOnly={isPending}/>
                         {errors.phone && (
-                            <FieldError color='#fff' message={errors.phone?.message} />
+                            <FieldError message={errors.phone?.message} />
                         )}
                     </label>
                 </div>
-                <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal'>
+                <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal text-[#06152b]'>
                     Message*
                     <textarea id="message" placeholder="Type what your want to say to us" {...register('message')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500' readOnly={isPending}/>
                     {errors.message && (
-                        <FieldError color='#fff' message={errors.message?.message} />
+                        <FieldError message={errors.message?.message} />
                     )}
                 </label>
                 <button type="submit" className='relative bg-themecolorprimary text-white py-4 px-4 mt-10 rounded w-full block mx-auto uppercase text-base  font-bold disabled:opacity-60 hover:bg-green-600 transition-colors' disabled={isPending}>

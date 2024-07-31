@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useTransition } from "react";
+import { useContext, useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -8,18 +8,16 @@ import { signUpSchema } from "@/lib/schema";
 import { CreateUser } from "@/actions/create-user";
 import { FieldError } from "./FieldError"; 
 import { FormMessage } from "./FormMessage";
+import { ModalContext } from "@/contexts/modalContext";
 
-type Props = {
-    setFormActive: (form: 'SignIn' | 'SignUp') => void
-    onClose: () => void;
-    setIsLoading: (loading: boolean) => void;
-}
 type FormProps = z.infer<typeof signUpSchema>;
 
-export default function FormSignUp({setFormActive, onClose, setIsLoading}: Props) {
+export default function FormSignUp() {
     const [message, setMessage] = useState('');
     const [success, setSuccess] = useState(false);
     const [isPending, startTransition] = useTransition();
+
+    const { setIsLoading, setFormActive } = useContext(ModalContext);
 
     const { handleSubmit, register, formState: { errors } } = useForm<FormProps>({
         mode: 'all',
@@ -56,21 +54,21 @@ export default function FormSignUp({setFormActive, onClose, setIsLoading}: Props
                 Name:
                 <input type="text" {...register('name')} onChange={handleInputChange} className='h-10 sm:h-[54px] font-normal px-2 rounded-[10px] border border-black text-black' readOnly={isPending}/>
                 {errors.name && (
-                    <FieldError color='#fff' message={errors.name?.message} />
+                    <FieldError message={errors.name?.message} />
                 )}
             </label>
             <label className={`flex gap-[2px] flex-col ${errors.email ? 'pb-1 sm:pb-3' : 'pb-3 sm:pb-5'} w-full text-xl sm:text-2xl font-semibold`}>
                 E-mail:
                 <input type="email" {...register('email')} onChange={handleInputChange} className='h-10 sm:h-[54px] font-normal px-2 rounded-[10px] border border-black text-black' readOnly={isPending}/>
                 {errors.email && (
-                    <FieldError color='#fff' message={errors.email?.message} />
+                    <FieldError message={errors.email?.message} />
                 )}
             </label>
             <label className={`flex gap-[2px] flex-col ${errors.password ? 'pb-1 sm:pb-3' : 'pb-3 sm:pb-5'} w-full text-xl sm:text-2xl font-semibold`}>
                 Password:
                 <input type="password" {...register('password')} onChange={handleInputChange} className='h-10 sm:h-[54px] font-normal px-2 rounded-[10px] border border-black text-black' readOnly={isPending}/>
                 {errors.password && (
-                    <FieldError color='#fff' message={errors.password?.message} />
+                    <FieldError message={errors.password?.message} />
                 )}
             </label>
     

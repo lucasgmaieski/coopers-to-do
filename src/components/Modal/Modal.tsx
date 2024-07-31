@@ -1,28 +1,28 @@
 "use client"
-import { MouseEvent, ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { ModalContext } from "@/contexts/modalContext";
+import { MouseEvent, ReactNode, useCallback, useContext, useEffect, useRef } from "react";
 
 type ModalProps = {
     children: ReactNode;
-    onClose: () => void;
-    loading: boolean;
     maxWidth: 'SM' | 'MD' | 'LG' | 'XL' | '2XL' | '3XL' | '4XL' | '5XL' | 'custom';
 }
 
-export default function Modal({ children, onClose, loading, maxWidth }: ModalProps) {
+export default function Modal({ children, maxWidth }: ModalProps) {
     const overlay = useRef<HTMLDivElement>(null);
     const wrapper = useRef<HTMLDivElement>(null);
-    const [isClosing, setIsClosing] = useState(false);
+
+    const { modalIsOpen, setModalIsOpen, isLoading} = useContext(ModalContext);
 
     const onClick = useCallback((e: MouseEvent<HTMLDivElement>) => {
-        if((e.target === overlay.current || e.target === wrapper.current) && !loading) {
-            setIsClosing(true);
+        if((e.target === overlay.current || e.target === wrapper.current) && !isLoading) {
+            setModalIsOpen(false);
         }
     }, [overlay, wrapper]);
 
     const onKeyDown = useCallback(
         (e: KeyboardEvent) => {
-          if (e.key === "Escape" && !loading) {
-            setIsClosing(true);
+          if (e.key === "Escape" && !isLoading) {
+            setModalIsOpen(false);
           }
     }, []);
 
@@ -32,13 +32,12 @@ export default function Modal({ children, onClose, loading, maxWidth }: ModalPro
     }, [onKeyDown]);
 
     useEffect(() => {
-        if (isClosing) {
+        if (!modalIsOpen) {
           setTimeout(() => {
-            if(onClose) onClose();
-            setIsClosing(false);
+            setModalIsOpen(true);
           }, 300);
         }
-      }, [isClosing, onClose]);
+      }, [modalIsOpen, setModalIsOpen]);
     function maxWidthModal() {
         switch (maxWidth) {
             case 'SM':
@@ -67,11 +66,11 @@ export default function Modal({ children, onClose, loading, maxWidth }: ModalPro
     return (
         <div 
             ref={overlay} 
-            className="fixed z-10 left-0 right-0 top-0 bottom-0 mx-auto bg-black/40"
+            className="fixed z-30 left-0 right-0 top-0 bottom-0 mx-auto bg-black/40"
             onClick={onClick}
         > 
             <div ref={wrapper} className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-[97vh] w-[95%] lg:w-full ${maxWidthModal()} bg-white overflow-y-auto`}>
-                <button className="absolute top-3 sm:top-5 right-3 sm:right-5 font-bold" onClick={() => setIsClosing(true)} disabled={loading}>
+                <button className="absolute top-3 sm:top-5 right-3 sm:right-5 font-bold" onClick={() => setModalIsOpen(false)} disabled={isLoading}>
                     close
                 </button>
                 {children}
