@@ -231,7 +231,7 @@ export function TaskList({session}: Props){
                                                     }}
                                                     autoFocus
                                                     spellCheck="false"
-                                                    className="text-base text-start flex-1 border-b border-b-transparent focus-within:outline-none  focus-within:border-b-themecolorsecondary text-themecolorsecondary"
+                                                    className="text-base text-start flex-1 w-full border-b border-b-transparent focus-within:outline-none  focus-within:border-b-themecolorsecondary text-themecolorsecondary"
                                                 />
                                             ) : (
                                                 <span 
@@ -254,7 +254,7 @@ export function TaskList({session}: Props){
                                     value={newTaskContent}
                                     onChange={(e) => setNewTaskContent(e.target.value)}
                                     placeholder="Add new task..."
-                                    className="text-base text-start flex-1 border-b border-transparent placeholder:text-themecolorsecondary focus-within:outline-none focus-within:border-themecolorsecondary text-themecolorsecondary"
+                                    className="text-base text-start flex-1 w-full border-b border-transparent placeholder:text-themecolorsecondary focus-within:outline-none focus-within:border-themecolorsecondary text-themecolorsecondary"
                                     required
                                 />
                                 <button className="opacity-0 pointer-events-none group-focus-within:pointer-events-auto group-focus-within:opacity-100 transition-opacity text-base text-white bg-themecolorsecondary px-2 py-1 rounded-md" type="submit">Add</button>

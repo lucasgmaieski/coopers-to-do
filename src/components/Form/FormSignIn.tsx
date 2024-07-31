@@ -85,7 +85,7 @@ export default function FormSignIn() {
                 }
             </button>
 
-            <FormMessage success message={message}/>
+            <FormMessage success={success} message={message}/>
 
             <p className="text-black mt-5 text-center">Don't have an account? <button className="underline" onClick={() => setFormActive('SignUp')}>Sign up</button></p>
 

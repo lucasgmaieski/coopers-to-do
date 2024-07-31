@@ -75,7 +75,7 @@ export default function FormContact() {
             <form onSubmit={handleSubmit(handleForm)} className='bg-white p-8 sm:p-16 rounded'>
                 <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal text-[#06152b]'>
                     Your name
-                    <input type="text" id="name" placeholder="Type your name here..." {...register('name')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500' readOnly={isPending}/>
+                    <input type="text" id="name" placeholder="Type your name here..." {...register('name')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500 focus-within:outline-none' readOnly={isPending}/>
                     {errors.name && (
                         <FieldError  message={errors.name?.message} />
                     )}
@@ -83,14 +83,14 @@ export default function FormContact() {
                 <div className="flex gap-0 sm:gap-[20px] flex-col sm:flex-row">
                     <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal text-[#06152b]'>
                         E-mail*
-                        <input type="email" id="email" placeholder="example@example.com" {...register('email')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500' readOnly={isPending}/>
+                        <input type="email" id="email" placeholder="example@example.com" {...register('email')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500 focus-within:outline-none' readOnly={isPending}/>
                         {errors.email && (
                             <FieldError message={errors.email?.message} />
                         )}
                     </label>
                     <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal text-[#06152b]'>
                         Telephone*
-                        <input type="text" id="phone" placeholder="(  ) ____-____" {...register('phone')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500' readOnly={isPending}/>
+                        <input type="text" id="phone" placeholder="(  ) ____-____" {...register('phone')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500 focus-within:outline-none' readOnly={isPending}/>
                         {errors.phone && (
                             <FieldError message={errors.phone?.message} />
                         )}
@@ -98,7 +98,7 @@ export default function FormContact() {
                 </div>
                 <label className='flex gap-[2px] flex-col pb-5 w-full text-base font-normal text-[#06152b]'>
                     Message*
-                    <textarea id="message" placeholder="Type what your want to say to us" {...register('message')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500' readOnly={isPending}/>
+                    <textarea id="message" placeholder="Type what your want to say to us" {...register('message')} onChange={handleInputChange} className='border border-[#06152B] rounded px-4 py-3 placeholder:text-slate-500 focus-within:outline-none' readOnly={isPending}/>
                     {errors.message && (
                         <FieldError message={errors.message?.message} />
                     )}

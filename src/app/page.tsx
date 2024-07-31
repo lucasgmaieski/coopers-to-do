@@ -21,7 +21,7 @@ export default async function Home() {
                     <div className="space-y-6 md:space-y-11 text-center sm:text-start">
                         <h1 className="text-6xl xsm:text-7xl  leading-[45px] xsm:leading-[55px] sm:leading-[55px] md:text-[80px] md:leading-[64px] font-bold">
                             Organize <br />
-                            <span className="text-4xl xsm:text-5xl md:text-[50px] md:leading-[60px] text-themecolorprimary font-normal ">your daily jobs</span>
+                            <span className="text-4xl xsm:text-5xl md:text-[60px] md:leading-[60px] text-themecolorprimary font-normal ">your daily jobs</span>
                         </h1>
 
                         <p className="text-xl md:text-2xl font-semibold pb-11">The only way to get things done</p>
