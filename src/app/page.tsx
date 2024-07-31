@@ -48,7 +48,7 @@ export default async function Home() {
                 <div className="bg-[url('/bg-todo.png')] bg-no-repeat bg-center bg-cover lg:bg-[length:100%_100%] w-full py-28 mb-10 sm:mb-20">
                     <div className="max-w-[600px] mx-auto text-center text-white space-y-10 px-3 sm:px-0">
                         <h2 className="relative w-fit mx-auto text-3xl sm:text-4xl md:text-[60px] md:leading-[60px] font-semibold font-poppins before:content-[''] before:absolute before:w-full before:h-1 before:bg-themecolorprimary before:-bottom-1 before:left-0">To-do List</h2>
-                        <p className="text-xl sm:text-2xl font-medium">Drag and drop to set your main priorities, check when done and create what's new.</p>
+                        <p className="text-xl sm:text-2xl font-medium">Drag and drop to set your main priorities, check when done and create what&apos;s new.</p>
                     </div>
                 </div>
 

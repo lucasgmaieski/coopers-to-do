@@ -24,7 +24,7 @@ export default function Modal({ children, maxWidth }: ModalProps) {
           if (e.key === "Escape" && !isLoading) {
             setModalIsOpen(false);
           }
-    }, []);
+    }, [setModalIsOpen]);
 
     useEffect(() => {
         document.addEventListener("keydown", onKeyDown);
@@ -37,7 +37,7 @@ export default function Modal({ children, maxWidth }: ModalProps) {
             setModalIsOpen(true);
           }, 300);
         }
-      }, [modalIsOpen, setModalIsOpen]);
+    }, [modalIsOpen, setModalIsOpen]);
     function maxWidthModal() {
         switch (maxWidth) {
             case 'SM':

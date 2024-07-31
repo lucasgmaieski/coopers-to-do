@@ -53,7 +53,7 @@ export default function FormSignIn() {
 
     useEffect(() => {
         setIsLoading(isPending);
-    }, [isPending])
+    }, [isPending, setIsLoading])
 
     return (
         <form onSubmit={handleSubmit(handleForm)} className='bg-white px-4 sm:px-8 md:p-2 w-full md:w-2/5 mx-auto'>
@@ -87,7 +87,7 @@ export default function FormSignIn() {
 
             <FormMessage success={success} message={message}/>
 
-            <p className="text-black mt-5 text-center">Don't have an account? <button className="underline" onClick={() => setFormActive('SignUp')}>Sign up</button></p>
+            <p className="text-black mt-5 text-center">Don&apos;t have an account? <button className="underline" onClick={() => setFormActive('SignUp')}>Sign up</button></p>
 
         </form>
     );

@@ -46,7 +46,7 @@ export default function FormSignUp() {
 
     useEffect(() => {
         setIsLoading(isPending);
-    }, [isPending])
+    }, [isPending, setIsLoading])
 
     return (
         <form onSubmit={handleSubmit(handleForm)} className='bg-white px-6 sm:px-8 md:p-2 w-full md:w-2/5 mx-auto'>
