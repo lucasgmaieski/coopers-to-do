@@ -44,6 +44,23 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        settingAsDoneHide: {
+          '0%': { transform: 'scale(1)', opacity: '1'  },
+          '25%': { transform: 'scale(1.1)', opacity: '1'  },
+          '100%': { transform: 'scale(0)', opacity: '0' },
+        },
+        deletingTask: {
+          '0%': { transform: 'scaleY(1)' },
+          '90%': { transform: 'scaleY(0.1)', opacity: '0.1'},
+          '100%': { transform: 'scaleY(0)'},
+        }
+      },
+      animation: {
+        settingAsDoneHide: 'settingAsDoneHide .6s ease-in-out 1',
+        settingAsDoneShow: 'settingAsDoneHide .6s ease-in-out reverse 1',
+        deletingTask: 'deletingTask .6s ease 1',
+      }
     },
   },
   plugins: [],
