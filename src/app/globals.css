@@ -20,9 +20,9 @@
 }
 @media(max-width: 768px) {
   .swiper .swiper-pagination-bullet {
-  width: 20px;
-  height: 20px;
-}
+    width: 20px;
+    height: 20px;
+  }
 }
 @layer utilities {
   .text-balance {

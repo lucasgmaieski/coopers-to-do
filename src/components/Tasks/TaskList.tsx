@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable, DropResult, DraggableStateSnapshot } from '@hello-pangea/dnd';
 import axios from 'axios';
 import Image from 'next/image';
 import { Session } from 'next-auth';
@@ -191,18 +191,18 @@ export function TaskList({session}: Props){
             <DragDropContext onDragEnd={handleDragEnd}>
                 <Droppable droppableId="tasks">
                     {(provided) => (
-                        <div className="relative shadow-[0_4px_60px_0_rgba(66,66,66,0.2)] before:content-[''] before:absolute before:w-full before:h-5 before:bg-themecolorsecondary before:top-0 before:left-0 px-8 pt-10 sm:pt-[60px] pb-10 text-center h-fit z-20" ref={provided.innerRef} {...provided.droppableProps}>
+                        <div className="relative shadow-[0_4px_60px_0_rgba(66,66,66,0.2)] before:content-[''] before:absolute before:w-full before:h-5 before:bg-themecolorsecondary before:top-0 before:left-0 px-6 pt-10 sm:pt-[60px] pb-10 text-center h-fit z-20" ref={provided.innerRef} {...provided.droppableProps}>
                             <h2 className="font-bold font-poppins text-[40px]">To-do</h2>
                             <h3 className='text-2xl'>Take a breath <br /> Start doing</h3>
                             <ul className="mt-8 transition-all">
                                 {tasks.map((task, index) => (
                                     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
-                                    {(provided) => (
+                                    {(provided , snapshot: DraggableStateSnapshot) => (
                                         <li
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
-                                            className={`flex gap-3 items-center justify-between py-2 group ${transitioningTask === task.id ? 'animate-settingAsDoneHide' : ''} ${deletingTask === task.id ? 'animate-deletingTask' : ''}`}    
+                                            className={`flex gap-3 items-center justify-between p-2 bg-white group ${transitioningTask === task.id ? 'animate-settingAsDoneHide' : ''} ${deletingTask === task.id ? 'animate-deletingTask' : ''} ${snapshot.isDragging ? 'bg-slate-100 rounded' : ''}`}    
                                         >
                                             <div 
                                                 className="size-6 border-2 border-themecolorsecondary rounded-full flex items-center justify-center cursor-pointer"
@@ -247,7 +247,7 @@ export function TaskList({session}: Props){
                                 ))}
                                 {provided.placeholder}
                             </ul>
-                            <form onSubmit={handleAddTask} className="flex items-center justify-between gap-3 group py-2">
+                            <form onSubmit={handleAddTask} className="flex items-center justify-between gap-3 group p-2">
                                 <div className="size-6 min-w-6 border-2 border-themecolorsecondary rounded-full flex items-center justify-center"></div>
                                 <input
                                     type="text"

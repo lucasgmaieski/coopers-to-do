@@ -22,8 +22,8 @@ export function Header({session}: Props) {
         <header className="absolute top-8 sm:top-14 z-30 container w-full max-w-7xl flex items-center justify-between gap-3">
             <Image
                 className="relative w-44 sm:w-auto"
-                src="/logo.png"
-                alt="Next.js Logo"
+                src="/logo-coopers.png"
+                alt="Coopers Logo"
                 width={217}
                 height={50}
                 priority

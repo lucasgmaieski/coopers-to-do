@@ -31,12 +31,12 @@ export const metadata: Metadata = {
       siteName: 'Coopers To-Do List',
       images: [
         {
-          url: '/logo.png',
+          url: '/logo-coopers.png',
           width: 434,
           height: 100,
         },
         {
-          url: '/logo.png',
+          url: '/logo-coopers.png',
           width: 217,
           height: 100,
           alt: 'Logo Coopers',
